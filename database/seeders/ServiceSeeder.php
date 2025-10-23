@@ -71,6 +71,8 @@ class ServiceSeeder extends Seeder
         ];
 
         foreach ($services as $service) {
+            // Generate slug from name
+            $service['slug'] = \Illuminate\Support\Str::slug($service['name']);
             Service::create($service);
         }
     }

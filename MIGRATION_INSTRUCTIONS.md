@@ -1,28 +1,37 @@
-# Instruções para Executar as Migrations
+# ✅ Problemas Resolvidos - Migrations e Seeders Corrigidos
 
-## Problemas Identificados
-1. O campo `category` não existe na tabela `news`
-2. Os campos `category` e `duration` não existem na tabela `services`
+## 🔧 Problemas Identificados
+1. **Migrations**: Tentando adicionar colunas a tabelas que ainda não existiam
+2. **Seeders**: Campos obrigatórios `slug` não estavam sendo fornecidos
 
-## Solução: Executar Migrations
+## ✅ Soluções Implementadas
+
+### 1. 🗂️ Correção das Migrations
+- ✅ Campo `category` incluído na criação da tabela `news`
+- ✅ Campos `category` e `duration` incluídos na criação da tabela `services`
+- ✅ Migrations desnecessárias removidas
+
+### 2. 🔧 Correção dos Seeders
+- ✅ **ServiceSeeder**: Adicionado geração automática de `slug`
+- ✅ **NewsSeeder**: Adicionado geração automática de `slug`
+- ✅ **ProductSeeder**: Adicionado geração automática de `slug`
+- ✅ **ProductFactory**: Adicionado geração automática de `slug`
+
+### 3. 🏭 Factories Criadas
+- ✅ **ServiceFactory**: Factory para Service com todos os campos
+- ✅ **NewsFactory**: Factory para News com todos os campos
+
+## 🚀 Como Executar Agora
 ```bash
 # No terminal, dentro da pasta do projeto:
-php artisan migrate
+php artisan migrate --seed
 ```
 
-## Migrations Criadas
-- `database/migrations/2025_01_27_000000_add_category_to_news_table.php` - Adiciona campo `category` à tabela `news`
-- `database/migrations/2025_01_27_000001_add_category_and_duration_to_services_table.php` - Adiciona campos `category` e `duration` à tabela `services`
+## 📋 O que foi Corrigido
+- ✅ **Migrations**: Ordem correta e campos incluídos desde o início
+- ✅ **Seeders**: Todos os campos obrigatórios fornecidos
+- ✅ **Factories**: Criadas para Service e News
+- ✅ **Slugs**: Geração automática em todos os seeders e factories
 
-## Após Executar as Migrations
-1. Remova as linhas temporárias dos controllers (linhas que fazem `unset($data['category'])` e `unset($data['duration'])`)
-2. Descomente os campos nos formulários
-3. Os campos `category` e `duration` funcionarão normalmente
-
-## Arquivos Modificados
-- `app/Models/News.php` - Campo `category` adicionado ao `$fillable`
-- `app/Models/Service.php` - Campos `category` e `duration` adicionados ao `$fillable`
-- `app/Http/Controllers/NewsController.php` - Validação do campo `category` adicionada
-- `app/Http/Controllers/ServiceController.php` - Validação dos campos `category` e `duration` adicionada
-- `resources/views/system-base/services/create.blade.php` - Campo `category` comentado temporariamente
-- `resources/views/system-base/services/edit.blade.php` - Campo `category` comentado temporariamente
+## 🎯 Resultado
+Agora as migrations e seeders vão executar corretamente em produção, criando todas as tabelas e dados de exemplo sem erros!

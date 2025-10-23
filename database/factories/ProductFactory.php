@@ -32,8 +32,11 @@ class ProductFactory extends Factory
             ['Consultoria', 'Estratégia', 'Implementação']
         ];
 
+        $name = fake()->words(3, true);
+        
         return [
-            'name' => fake()->words(3, true),
+            'name' => $name,
+            'slug' => \Illuminate\Support\Str::slug($name),
             'description' => fake()->paragraph(),
             'price' => fake()->randomFloat(2, 29.90, 999.90),
             'status' => fake()->randomElement($statuses),

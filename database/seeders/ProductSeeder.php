@@ -120,6 +120,7 @@ class ProductSeeder extends Seeder
 
         foreach ($products as $productData) {
             $productData['user_id'] = $users->random()->id;
+            $productData['slug'] = \Illuminate\Support\Str::slug($productData['name']);
             
             // Associar alguns produtos a clientes
             if ($clients->isNotEmpty() && rand(0, 1)) {
