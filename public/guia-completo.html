@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Completo - DevStarter Kit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7c3aed',
+                        secondary: '#1f2937',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .step-completed { background-color: #10b981; }
+        .step-pending { background-color: #6b7280; }
+        .smooth-scroll { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">D</span>
+                    </div>
+                    <h1 class="ml-3 text-2xl font-bold text-gray-900">DevStarter Kit</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">Guia Completo</span>
+                    <button onclick="toggleProgress()" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">
+                        Ver Progresso
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div id="progressBar" class="bg-white shadow-sm border-b hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex space-x-4">
+                    <div class="flex items-center">
+                        <div id="step1" class="w-8 h-8 rounded-full step-pending flex items-center justify-center text-white text-sm font-bold">1</div>
+                        <span class="ml-2 text-sm">Local</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="step2" class="w-8 h-8 rounded-full step-pending flex items-center justify-center text-white text-sm font-bold">2</div>
+                        <span class="ml-2 text-sm">Hospedagem</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="step3" class="w-8 h-8 rounded-full step-pending flex items-center justify-center text-white text-sm font-bold">3</div>
+                        <span class="ml-2 text-sm">Personalizar</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="step4" class="w-8 h-8 rounded-full step-pending flex items-center justify-center text-white text-sm font-bold">4</div>
+                        <span class="ml-2 text-sm">Testar</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div id="step5" class="w-8 h-8 rounded-full step-pending flex items-center justify-center text-white text-sm font-bold">5</div>
+                        <span class="ml-2 text-sm">Divulgar</span>
+                    </div>
+                </div>
+                <button onclick="toggleProgress()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8">
+                <button onclick="showTab('intro')" class="tab-button py-4 px-1 border-b-2 border-primary text-primary font-medium">
+                    Introdução
+                </button>
+                <button onclick="showTab('local')" class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Configuração Local
+                </button>
+                <button onclick="showTab('hosting')" class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Hospedagem
+                </button>
+                <button onclick="showTab('customize')" class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Personalização
+                </button>
+                <button onclick="showTab('test')" class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Testes
+                </button>
+                <button onclick="showTab('marketing')" class="tab-button py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700">
+                    Marketing
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Seção 1: Introdução -->
+        <div id="intro" class="tab-content active">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="text-center mb-8">
+                    <div class="w-20 h-20 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-white font-bold text-3xl">🎉</span>
+                    </div>
+                    <h1 class="text-4xl font-bold text-gray-900 mb-4">Bem-vindo ao DevStarter Kit!</h1>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Parabéns! Você acaba de adquirir o DevStarter Kit, um sistema completo para criar, personalizar e vender seus próprios sistemas e sites. Este guia irá te conduzir passo a passo, de forma simples, mesmo que você não tenha experiência técnica.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">O que vem no kit:</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Sistema Base Laravel completo
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Landing page de vendas
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Arquivo de configuração unificado
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Mini curso em vídeo
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Materiais de marketing
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-green-50 to-teal-50 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Fluxo de trabalho:</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</div>
+                                <span>Configurar ambiente local</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</div>
+                                <span>Testar e personalizar</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">3</div>
+                                <span>Publicar online</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">4</div>
+                                <span>Divulgar e vender</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="showTab('local')" class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-purple-600 transition text-lg font-medium">
+                        Começar Configuração Local →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 2: Configuração Local -->
+        <div id="local" class="tab-content">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Testando e configurando o sistema no seu computador</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Antes de publicar o sistema online, vamos configurar ele localmente para você testar e personalizar sem riscos.
+                </p>
+
+                <div class="space-y-8">
+                    <!-- Passo 1 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">1</div>
+                            <h3 class="text-xl font-bold text-gray-900">Instalar servidor local</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Um servidor local permite rodar Laravel no seu computador sem precisar de internet. Você pode usar XAMPP, Laragon, MAMP ou LAMP.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Opções recomendadas:</h4>
+                            <ul class="space-y-2">
+                                <li><strong>XAMPP:</strong> <a href="https://www.apachefriends.org/" class="text-primary hover:underline" target="_blank">https://www.apachefriends.org/</a></li>
+                                <li><strong>Laragon:</strong> <a href="https://laragon.org/" class="text-primary hover:underline" target="_blank">https://laragon.org/</a></li>
+                                <li><strong>MAMP:</strong> <a href="https://www.mamp.info/" class="text-primary hover:underline" target="_blank">https://www.mamp.info/</a></li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-3">Onde ficam as pastas dos sites no seu computador</h4>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <p class="text-sm text-gray-700 mb-2"><strong>XAMPP (Windows):</strong> coloque seu projeto dentro de:</p>
+                                    <pre class="text-xs bg-white rounded border p-3 overflow-auto">C:\xampp\htdocs\seu-projeto\</pre>
+                                    <p class="text-sm text-gray-700 mt-3"><strong>Linux (LAMP):</strong></p>
+                                    <pre class="text-xs bg-white rounded border p-3 overflow-auto">/var/www/html/seu-projeto/</pre>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-700 mb-2"><strong>Laragon (Windows):</strong> coloque seu projeto dentro de:</p>
+                                    <pre class="text-xs bg-white rounded border p-3 overflow-auto">C:\laragon\www\seu-projeto\</pre>
+                                    <p class="text-sm text-gray-700 mt-3"><strong>MAMP (macOS):</strong></p>
+                                    <pre class="text-xs bg-white rounded border p-3 overflow-auto">/Applications/MAMP/htdocs/seu-projeto/</pre>
+                                </div>
+                            </div>
+                            <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <img src="/images/placeholders/xampp-htdocs.png" alt="XAMPP htdocs" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/xampp-htdocs.png">
+                                <img src="/images/placeholders/laragon-www.png" alt="Laragon www" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/laragon-www.png">
+                                <img src="/images/placeholders/mamp-htdocs.png" alt="MAMP htdocs" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/mamp-htdocs.png">
+                                <img src="/images/placeholders/linux-var-www-html.png" alt="/var/www/html" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/linux-var-www-html.png">
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2">Imagens ilustrativas. Clique para ampliar.</p>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(1, 1)">
+                                <span>Servidor local instalado e funcionando</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Passo 2 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">2</div>
+                            <h3 class="text-xl font-bold text-gray-900">Descompactar o DevStarter Kit</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Copie a pasta do projeto para a pasta do seu servidor local:
+                        </p>
+                        <ul class="list-disc ml-6 text-sm text-gray-700 space-y-1">
+                            <li><strong>XAMPP (Windows):</strong> <code>C:\xampp\htdocs\devstarterkit\</code></li>
+                            <li><strong>Laragon (Windows):</strong> <code>C:\laragon\www\devstarterkit\</code></li>
+                            <li><strong>MAMP (macOS):</strong> <code>/Applications/MAMP/htdocs/devstarterkit/</code></li>
+                            <li><strong>Linux (LAMP):</strong> <code>/var/www/html/devstarterkit/</code></li>
+                        </ul>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Estrutura de pastas:</h4>
+                            <pre class="text-sm text-gray-700">
+htdocs/
+└── devstarterkit/
+    ├── app/
+    ├── config/
+    ├── database/
+    ├── public/
+    ├── resources/
+    └── ...
+                            </pre>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <img src="/images/placeholders/copy-project-xampp.png" alt="Copiando para htdocs" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/copy-project-xampp.png">
+                            <img src="/images/placeholders/copy-project-laragon.png" alt="Copiando para www do Laragon" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/copy-project-laragon.png">
+                            <img src="/images/placeholders/copy-project-mamp.png" alt="Copiando para htdocs do MAMP" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/copy-project-mamp.png">
+                            <img src="/images/placeholders/copy-project-linux.png" alt="Copiando para /var/www/html" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/copy-project-linux.png">
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(1, 2)">
+                                <span>Arquivos descompactados na pasta correta</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Passo 3 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">3</div>
+                            <h3 class="text-xl font-bold text-gray-900">Configurar banco de dados</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Crie um banco de dados vazio e configure o nome, usuário e senha no arquivo de configuração fornecido.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Arquivo .env:</h4>
+                            <pre class="text-sm text-gray-700">
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=devstarterkit
+DB_USERNAME=root
+DB_PASSWORD=
+                            </pre>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(1, 3)">
+                                <span>Banco de dados criado e configurado</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Passo 4 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">4</div>
+                            <h3 class="text-xl font-bold text-gray-900">Rodar o sistema pela primeira vez</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Isso vai criar todas as tabelas necessárias e permitir que você entre no sistema com o usuário de teste.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Comandos no terminal:</h4>
+                            <pre class="text-sm text-gray-700">
+composer install
+php artisan migrate
+php artisan db:seed
+php artisan serve
+                            </pre>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(1, 4)">
+                                <span>Sistema rodando em http://localhost:8000</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Passo 5 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">5</div>
+                            <h3 class="text-xl font-bold text-gray-900">Personalizar o sistema localmente</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Você pode alterar cores, textos, logos e módulos extras no arquivo de configuração. Todas as mudanças aparecem automaticamente ao atualizar o navegador.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Arquivo config/devstarter.php:</h4>
+                            <pre class="text-sm text-gray-700">
+'app' => [
+    'name' => 'Seu Sistema',
+    'email' => 'contato@seusite.com',
+],
+'landing' => [
+    'hero' => [
+        'title' => 'Seu Título',
+        'cta_text' => 'Seu Botão',
+    ],
+],
+                            </pre>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(1, 5)">
+                                <span>Sistema personalizado conforme desejado</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-between">
+                    <button onclick="showTab('intro')" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition">
+                        ← Voltar
+                    </button>
+                    <button onclick="showTab('hosting')" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">
+                        Próximo: Hospedagem →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 3: Hospedagem -->
+        <div id="hosting" class="tab-content">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Publicando o sistema online</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Agora que você testou tudo localmente, vamos colocar o sistema no ar usando uma hospedagem compartilhada (Hostinger). Também mostraremos como registrar um domínio, caso você ainda não tenha.
+                </p>
+
+                <div class="space-y-8">
+                    <!-- Passo 1 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">1</div>
+                            <h3 class="text-xl font-bold text-gray-900">Comprar hospedagem e domínio</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Entre no site da Hostinger, escolha um plano compartilhado e registre ou transfira seu domínio.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Recomendações:</h4>
+                            <ul class="space-y-2">
+                                <li><strong>Hostinger:</strong> <a href="https://www.hostinger.com.br/" class="text-primary hover:underline" target="_blank">https://www.hostinger.com.br/</a></li>
+                                <li><strong>Plano:</strong> Hosting Compartilhado Premium</li>
+                                <li><strong>Domínio:</strong> .com.br ou .com</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(2, 1)">
+                                <span>Hospedagem e domínio contratados</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Passo 2 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">2</div>
+                            <h3 class="text-xl font-bold text-gray-900">Acessar painel da Hostinger (hPanel)</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            É aqui que você vai criar banco de dados, enviar arquivos e configurar seu site.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Acesso ao hPanel:</h4>
+                            <ul class="space-y-2">
+                                <li>1. Acesse o email de boas-vindas da Hostinger</li>
+                                <li>2. Clique no link do hPanel</li>
+                                <li>3. Faça login com suas credenciais</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(2, 2)">
+                                <span>hPanel acessado com sucesso</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Passo 3 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">3</div>
+                            <h3 class="text-xl font-bold text-gray-900">Criar banco de dados MySQL</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Anote o nome, usuário e senha, você precisará no próximo passo.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">No hPanel:</h4>
+                            <ul class="space-y-2">
+                                <li>1. Vá em "Bancos de Dados MySQL"</li>
+                                <li>2. Clique em "Criar novo banco de dados"</li>
+                                <li>3. Digite um nome (ex: devstarterkit)</li>
+                                <li>4. Crie um usuário e senha</li>
+                                <li>5. Anote todas as informações</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(2, 3)">
+                                <span>Banco de dados criado e informações anotadas</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Passo 4 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">4</div>
+                            <h3 class="text-xl font-bold text-gray-900">Enviar arquivos do DevStarter Kit</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Use FTP ou o Gerenciador de Arquivos do hPanel para enviar todos os arquivos para a pasta <strong>public_html</strong> (raiz do site) ou para uma <strong>subpasta</strong> (ex.: <code>public_html/sistema</code>). Se publicar em subpasta, acesse via <code>https://seudominio.com/sistema</code>.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Métodos de upload:</h4>
+                            <ul class="space-y-2">
+                                <li><strong>Gerenciador de Arquivos:</strong> Mais fácil para iniciantes</li>
+                                <li><strong>FTP:</strong> FileZilla ou similar</li>
+                                <li><strong>Git:</strong> Para desenvolvedores</li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <img src="/images/placeholders/hpanel-file-manager.png" alt="Gerenciador de Arquivos - hPanel" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/hpanel-file-manager.png">
+                            <img src="/images/placeholders/hpanel-public-html.png" alt="Pasta public_html" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/hpanel-public-html.png">
+                            <img src="/images/placeholders/filezilla-ftp.png" alt="FileZilla FTP" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/filezilla-ftp.png">
+                            <img src="/images/placeholders/uploading-files.png" alt="Enviando arquivos" class="rounded border cursor-pointer lightbox-trigger" data-full="/images/placeholders/uploading-files.png">
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(2, 4)">
+                                <span>Arquivos enviados para o servidor</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Passo 5 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">5</div>
+                            <h3 class="text-xl font-bold text-gray-900">Configurar arquivo de configuração online</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Insira as informações do banco de dados e o URL do seu domínio.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Arquivo .env online:</h4>
+                            <pre class="text-sm text-gray-700">
+APP_URL=https://seudominio.com
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_DATABASE=u123456789_devstarterkit
+DB_USERNAME=u123456789_user
+DB_PASSWORD=sua_senha_aqui
+                            </pre>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(2, 5)">
+                                <span>Arquivo .env configurado com dados do servidor</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Passo 6 -->
+                    <div class="border-l-4 border-primary pl-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold mr-4">6</div>
+                            <h3 class="text-xl font-bold text-gray-900">Rodar sistema online</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Acesse pelo navegador e confira se o login e dashboard funcionam. Se houver módulo de pagamento, configure as chaves API e teste.
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold mb-2">Comandos via SSH (se disponível):</h4>
+                            <pre class="text-sm text-gray-700">
+php artisan migrate
+php artisan db:seed
+php artisan config:cache
+                            </pre>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-2" onchange="markStepComplete(2, 6)">
+                                <span>Sistema funcionando online</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-between">
+                    <button onclick="showTab('local')" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition">
+                        ← Voltar
+                    </button>
+                    <button onclick="showTab('customize')" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">
+                        Próximo: Personalização →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 4: Personalização -->
+        <div id="customize" class="tab-content">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Personalizando o Sistema</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    O arquivo de configuração permite alterar tudo no sistema sem precisar tocar em código.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Sistema Base -->
+                    <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Sistema Base</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-gray-900">Logo e Favicon</h4>
+                                <p class="text-sm text-gray-600">Altere no arquivo config/devstarter.php</p>
+                                <pre class="text-xs text-gray-700 mt-2">
+'branding' => [
+    'logo' => '/images/logo.png',
+    'favicon' => '/favicon.ico',
+],
+                                </pre>
+                            </div>
+
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-gray-900">Cores do Dashboard</h4>
+                                <p class="text-sm text-gray-600">Personalize as cores principais</p>
+                                <pre class="text-xs text-gray-700 mt-2">
+'colors' => [
+    'primary' => '#7c3aed',
+    'secondary' => '#1f2937',
+],
+                                </pre>
+                            </div>
+
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-gray-900">Mensagens do Sistema</h4>
+                                <p class="text-sm text-gray-600">Altere textos padrão</p>
+                                <pre class="text-xs text-gray-700 mt-2">
+'messages' => [
+    'welcome' => 'Bem-vindo!',
+    'login_success' => 'Login realizado!',
+],
+                                </pre>
+                            </div>
+
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-gray-900">Módulos</h4>
+                                <p class="text-sm text-gray-600">Ative/desative funcionalidades</p>
+                                <pre class="text-xs text-gray-700 mt-2">
+'modules' => [
+    'clients' => ['enabled' => true],
+    'sales' => ['enabled' => false],
+],
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Landing Page -->
+                    <div class="bg-gradient-to-r from-green-50 to-teal-50 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Landing Page</h3>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-gray-900">Hero Section</h4>
+                                <p class="text-sm text-gray-600">Título principal e botões</p>
+                                <pre class="text-xs text-gray-700 mt-2">
+'hero' => [
+    'title' => 'Seu Título',
+    'cta_text' => 'Seu Botão',
+],
+                                </pre>
+                            </div>
+
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-gray-900">Problemas</h4>
+                                <p class="text-sm text-gray-600">Lista de dores do cliente</p>
+                                <pre class="text-xs text-gray-700 mt-2">
+'problems' => [
+    [
+        'title' => 'Problema 1',
+        'description' => 'Descrição',
+    ],
+],
+                                </pre>
+                            </div>
+
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-gray-900">Soluções</h4>
+                                <p class="text-sm text-gray-600">Benefícios do seu produto</p>
+                                <pre class="text-xs text-gray-700 mt-2">
+'features' => [
+    [
+        'title' => 'Recurso 1',
+        'description' => 'Descrição',
+    ],
+],
+                                </pre>
+                            </div>
+
+                            <div class="border-l-4 border-primary pl-4">
+                                <h4 class="font-semibold text-gray-900">Depoimentos</h4>
+                                <p class="text-sm text-gray-600">Testemunhos de clientes</p>
+                                <pre class="text-xs text-gray-700 mt-2">
+'testimonials' => [
+    [
+        'name' => 'Cliente',
+        'text' => 'Depoimento',
+    ],
+],
+                                </pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-yellow-700">
+                                <strong>Dica:</strong> Faça pequenas alterações e teste cada mudança para garantir que tudo funciona antes de publicar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-between">
+                    <button onclick="showTab('hosting')" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition">
+                        ← Voltar
+                    </button>
+                    <button onclick="showTab('test')" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">
+                        Próximo: Testes →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 5: Testes -->
+        <div id="test" class="tab-content">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Teste completo antes de divulgar</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Verifique todos os itens abaixo para garantir que seu sistema está funcionando perfeitamente.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Sistema -->
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Sistema Base</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 1)">
+                                <span>Login e logout funcionando</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 2)">
+                                <span>Dashboard carregando corretamente</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 3)">
+                                <span>CRUD de clientes operando</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 4)">
+                                <span>CRUD de produtos operando</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 5)">
+                                <span>Navegação entre páginas funcionando</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 6)">
+                                <span>Cores e logo personalizados aplicados</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Landing Page -->
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Landing Page</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 7)">
+                                <span>Página carregando sem erros</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 8)">
+                                <span>Botões redirecionando corretamente</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 9)">
+                                <span>Formulários funcionando</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 10)">
+                                <span>Imagens carregando corretamente</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 11)">
+                                <span>Design responsivo (mobile/desktop)</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="rounded mr-3" onchange="markStepComplete(3, 12)">
+                                <span>Textos e títulos personalizados</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-green-50 border-l-4 border-green-400 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-green-700">
+                                <strong>Parabéns!</strong> Se todos os itens estão marcados, seu sistema está pronto para ser divulgado!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-between">
+                    <button onclick="showTab('customize')" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition">
+                        ← Voltar
+                    </button>
+                    <button onclick="showTab('marketing')" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">
+                        Próximo: Marketing →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção 6: Marketing -->
+        <div id="marketing" class="tab-content">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Comece a divulgar seu sistema</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    Use os materiais de marketing incluídos no kit para começar a vender seu sistema.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Materiais Incluídos -->
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Materiais Incluídos</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Textos para WhatsApp
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Templates de email
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Posts para redes sociais
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Prints e mockups
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Estratégias -->
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Estratégias de Venda</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</div>
+                                <span>Divulgue em grupos do Facebook</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</div>
+                                <span>Use WhatsApp Business</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</div>
+                                <span>Poste no LinkedIn</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">4</div>
+                                <span>Crie vídeos demonstrativos</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Para Afiliados -->
+                    <div class="bg-gradient-to-r from-green-50 to-teal-50 rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Para Afiliados</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Roteiros de vendas
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Links de afiliado
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Banners promocionais
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                Comissões atrativas
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-blue-50 border-l-4 border-blue-400 p-4">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm text-blue-700">
+                                <strong>Dica:</strong> Comece divulgando para sua rede de contatos e vá expandindo gradualmente. A consistência é mais importante que a velocidade.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-between">
+                    <button onclick="showTab('test')" class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition">
+                        ← Voltar
+                    </button>
+                    <button onclick="showTab('intro')" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">
+                        Concluir Guia ✓
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <span class="text-white font-bold text-xl">D</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">DevStarter Kit</h3>
+                <p class="text-gray-400 mb-4">Sistema completo para criar, personalizar e vender</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">Suporte</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Documentação</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">Contato</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+        <button id="lightboxClose" class="absolute top-4 right-4 text-white bg-white/10 hover:bg-white/20 rounded-full p-2" aria-label="Fechar">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <img id="lightboxImage" src="" alt="Imagem ampliada" class="max-w-[95vw] max-h-[90vh] rounded shadow-2xl">
+    </div>
+
+    <script>
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tab buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('border-primary', 'text-primary');
+                button.classList.add('border-transparent', 'text-gray-500');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('border-primary', 'text-primary');
+            event.target.classList.remove('border-transparent', 'text-gray-500');
+        }
+
+        // Progress functionality
+        function toggleProgress() {
+            const progressBar = document.getElementById('progressBar');
+            progressBar.classList.toggle('hidden');
+        }
+
+        // Step completion tracking
+        function markStepComplete(section, step) {
+            const stepElement = document.getElementById(`step${section}`);
+            if (stepElement) {
+                stepElement.classList.remove('step-pending');
+                stepElement.classList.add('step-completed');
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialize first tab as active
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstTabButton = document.querySelector('.tab-button');
+            if (firstTabButton) {
+                firstTabButton.classList.add('border-primary', 'text-primary');
+                firstTabButton.classList.remove('border-transparent', 'text-gray-500');
+            }
+
+            // Lightbox wiring
+            const triggers = document.querySelectorAll('.lightbox-trigger');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImage');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            function openLightbox(src, alt) {
+                lightboxImg.src = src;
+                lightboxImg.alt = alt || 'Imagem ampliada';
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+            }
+
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                lightboxImg.src = '';
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            triggers.forEach(el => {
+                el.addEventListener('click', () => {
+                    const src = el.getAttribute('data-full') || el.src;
+                    const alt = el.getAttribute('alt') || '';
+                    openLightbox(src, alt);
+                });
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            lightboxClose.addEventListener('click', closeLightbox);
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
