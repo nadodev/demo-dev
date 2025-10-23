@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('short_description')->nullable();
             $table->decimal('price', 10, 2)->nullable();
             $table->string('price_type')->default('fixed'); // fixed, hourly, custom
+            $table->string('category')->nullable();
+            $table->string('duration')->nullable();
             $table->string('featured_image')->nullable();
             $table->json('features')->nullable(); // Array of features
             $table->enum('status', ['active', 'inactive', 'draft'])->default('active');
