@@ -2,66 +2,48 @@
 
 ## 🚨 Problemas Identificados
 1. **Tabela `users` já existe** - Laravel não tem registro da migration
-2. **Tabela `products` não tem campo `slug`** - Campo obrigatório não existe
+2. **Tabela `products` não existe** - Migration não foi executada
+3. **Campos obrigatórios faltando** - `slug` em várias tabelas
 
 ## ✅ Soluções (Execute uma delas)
 
-### Opção 1: Comandos Laravel (Recomendado)
+### Opção 1: Reset e Recriação (Recomendado)
 ```bash
-# 1. Instalar a tabela de migrations (se não existir)
-php artisan migrate:install
-
-# 2. Executar apenas as migrations pendentes (pular as que já existem)
-php artisan migrate --force
-
-# 3. Executar os seeders
-php artisan db:seed
-```
-
-### Opção 1.1: Se ainda der erro de slug
-```bash
-# Executar migration específica para adicionar slug
-php artisan migrate --path=database/migrations/2025_01_27_000002_add_slug_to_products_table.php
-
-# Depois executar seeders
-php artisan db:seed
-```
-
-### Opção 2: SQL Manual (Se Opção 1 não funcionar)
-Execute este SQL no seu banco de dados MySQL:
-
-```sql
--- Criar tabela migrations se não existir
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Marcar migrations já executadas
-INSERT IGNORE INTO `migrations` (`migration`, `batch`) VALUES
-('0001_01_01_000000_create_users_table', 1),
-('0001_01_01_000001_create_cache_table', 1),
-('0001_01_01_000002_create_jobs_table', 1);
-
--- Adicionar campo slug à tabela products (se não existir)
-ALTER TABLE `products` ADD COLUMN `slug` VARCHAR(255) UNIQUE AFTER `name`;
-```
-
-Depois execute:
-```bash
-php artisan migrate --seed
-```
-
-### Opção 3: Reset Completo (Cuidado!)
-```bash
-# ⚠️ ATENÇÃO: Isso vai apagar todos os dados!
+# ⚠️ ATENÇÃO: Isso vai apagar todos os dados existentes!
 php artisan migrate:fresh --seed
 ```
 
+### Opção 2: Migrations Individuais (Se não quiser apagar dados)
+```bash
+# 1. Instalar tabela de migrations
+php artisan migrate:install
+
+# 2. Executar migrations uma por uma (se necessário)
+php artisan migrate --path=database/migrations/2025_10_20_143839_create_clients_table.php
+php artisan migrate --path=database/migrations/2025_10_20_143842_create_products_table.php
+php artisan migrate --path=database/migrations/2025_10_21_174114_create_news_table.php
+php artisan migrate --path=database/migrations/2025_10_21_174117_create_services_table.php
+
+# 3. Executar seeders
+php artisan db:seed
+```
+
+### Opção 3: Forçar Todas as Migrations
+```bash
+# 1. Instalar tabela de migrations
+php artisan migrate:install
+
+# 2. Forçar execução de todas as migrations
+php artisan migrate --force
+
+# 3. Executar seeders
+php artisan db:seed
+```
+
 ## 🎯 Recomendação
-Use a **Opção 1** primeiro. Se não funcionar, use a **Opção 2**.
+- **Use Opção 1** se não tiver dados importantes (mais rápido e limpo)
+- **Use Opção 2** se quiser preservar dados existentes
+- **Use Opção 3** como último recurso
 
 ## 📋 Após Executar
 1. Execute `php artisan migrate:status` para verificar

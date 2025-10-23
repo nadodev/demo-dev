@@ -222,7 +222,6 @@
                 }
             }
         </script>
-    @endif
 
     @stack('styles')
 </head>
