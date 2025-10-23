@@ -11,9 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('slug')->unique()->after('name');
-        });
+        // Check if products table exists
+        if (Schema::hasTable('products')) {
+            // Check if slug column already exists
+            if (!Schema::hasColumn('products', 'slug')) {
+                Schema::table('products', function (Blueprint $table) {
+                    $table->string('slug')->unique()->after('name');
+                });
+            }
+        }
     }
 
     /**
