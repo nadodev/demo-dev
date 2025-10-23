@@ -175,7 +175,7 @@
             <!-- Pagination -->
             @if($services->hasPages())
                 <div class="mt-6 flex items-center justify-between">
-                    <div class="text-sm text-gray-700">
+                    <div class="pagination-info">
                         Mostrando {{ $services->firstItem() }} a {{ $services->lastItem() }} de {{ $services->total() }} resultados
                     </div>
                     <div class="flex space-x-2">

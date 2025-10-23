@@ -171,7 +171,7 @@
             <!-- Pagination -->
             @if($news->hasPages())
                 <div class="mt-6 flex items-center justify-between">
-                    <div class="text-sm text-gray-700">
+                    <div class="pagination-info">
                         Mostrando {{ $news->firstItem() }} a {{ $news->lastItem() }} de {{ $news->total() }} resultados
                     </div>
                     <div class="flex space-x-2">

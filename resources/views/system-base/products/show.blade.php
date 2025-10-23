@@ -4,12 +4,12 @@
 @section('page-title', 'Detalhes do Produto')
 
 @section('top-actions')
-    <div class="flex flex-col sm:flex-row gap-3">
-        <a href="{{ route('dashboard.products.edit', $product) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+    <div class="flex flex-row space-x-3">
+        <a href="{{ route('dashboard.products.edit', $product) }}" class="btn-primary">
             <i class="fas fa-edit mr-2"></i>
             Editar
         </a>
-        <a href="{{ route('dashboard.products.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors duration-300">
+        <a href="{{ route('dashboard.products.index') }}" class="btn-outline">
             <i class="fas fa-arrow-left mr-2"></i>
             Voltar
         </a>

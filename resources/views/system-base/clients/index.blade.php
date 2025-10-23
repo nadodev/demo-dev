@@ -133,12 +133,12 @@
                             <td class="text-right">
                                 <div class="flex items-center justify-end space-x-2">
                                     <a href="{{ route('dashboard.clients.show', $client) }}" 
-                                       class="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors duration-200">
+                                       class="btn-action btn-view">
                                         <i class="fas fa-eye mr-1"></i>
                                         Ver
                                     </a>
                                     <a href="{{ route('dashboard.clients.edit', $client) }}" 
-                                       class="inline-flex items-center px-3 py-2 text-sm font-medium text-yellow-600 hover:text-yellow-700 transition-colors duration-200">
+                                       class="btn-action btn-edit">
                                         <i class="fas fa-edit mr-1"></i>
                                         Editar
                                     </a>
@@ -146,8 +146,7 @@
                                           onsubmit="return confirm('Tem certeza que deseja excluir este cliente?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" 
-                                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors duration-200">
+                                        <button type="submit" class="btn-action btn-delete">
                                             <i class="fas fa-trash mr-1"></i>
                                             Excluir
                                         </button>
@@ -163,7 +162,7 @@
             <!-- Pagination -->
             @if($clients->hasPages())
                 <div class="mt-6 flex items-center justify-between">
-                    <div class="text-sm text-gray-700">
+                    <div class="pagination-info">
                         Mostrando {{ $clients->firstItem() }} a {{ $clients->lastItem() }} de {{ $clients->total() }} resultados
                     </div>
                     <div class="flex space-x-2">

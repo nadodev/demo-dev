@@ -4,24 +4,28 @@
 @section('page-title', 'Novo Usuário')
 
 @section('top-actions')
-<a href="{{ route('dashboard.users.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200">
-    <i class="fas fa-arrow-left mr-2"></i>
-    Voltar
-</a>
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+        <a href="{{ route('dashboard.users.index') }}" class="btn-outline">
+            <i class="fas fa-arrow-left mr-2"></i>
+            <span class="hidden sm:inline">Voltar</span>
+        </a>
+    </div>
 @endsection
 
 @section('content')
-<div class="max-w-2xl mx-auto">
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
-        <div class="px-6 py-4 border-b border-gray-200">
-            <h3 class="text-lg font-medium text-gray-900">Criar Novo Usuário</h3>
-            <p class="text-sm text-gray-500">Preencha os dados do novo usuário</p>
+    <div class="card animate-slide-up">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-user-plus text-indigo-500 mr-3"></i>
+                Criar Novo Usuário
+            </h3>
         </div>
         
-        <form method="POST" action="{{ route('dashboard.users.store') }}" class="p-6 space-y-6">
+        <form method="POST" action="{{ route('dashboard.users.store') }}" class="space-y-6">
             @csrf
 
-            <!-- Name -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                <!-- Name -->
             <div>
                 <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
                     <i class="fas fa-user mr-2"></i>Nome Completo

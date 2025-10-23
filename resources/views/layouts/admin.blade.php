@@ -25,11 +25,90 @@
     <style>
         /* Modern Button Styles */
         .btn-primary {
-            @apply inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            color: white;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
+        }
+        
+        /* Action Button Styles */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-view {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+        
+        .btn-view:hover {
+            background-color: #bfdbfe;
+            color: #1e3a8a;
+            transform: translateY(-1px);
+        }
+        
+        .btn-edit {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .btn-edit:hover {
+            background-color: #fde68a;
+            color: #78350f;
+            transform: translateY(-1px);
+        }
+        
+        .btn-delete {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .btn-delete:hover {
+            background-color: #fecaca;
+            color: #7f1d1d;
+            transform: translateY(-1px);
         }
         
         .btn-success {
-            @apply inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(to right, #10b981, #059669);
+            color: white;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(to right, #059669, #047857);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-2px);
         }
         
         .btn-warning {
@@ -45,87 +124,294 @@
         }
         
         .btn-outline {
-            @apply inline-flex items-center px-6 py-3 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #d1d5db;
+            color: #374151;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            text-decoration: none;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .btn-outline:hover {
+            background-color: #f9fafb;
+            border-color: #9ca3af;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
         }
         
         /* Modern Card Styles */
         .card {
-            @apply bg-white rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+            transform: translateY(-4px);
         }
         
         .card-header {
-            @apply border-b border-gray-200 pb-4 mb-6;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .card-title {
-            @apply text-xl font-bold text-gray-900 flex items-center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            display: flex;
+            align-items: center;
         }
         
         /* Modern Table Styles */
         .table-modern {
-            @apply w-full bg-white rounded-2xl shadow-xl overflow-hidden;
+            width: 100%;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
         }
         
         .table-modern thead {
-            @apply bg-gradient-to-r from-gray-50 to-gray-100;
+            background: linear-gradient(to right, #f9fafb, #f3f4f6);
         }
         
         .table-modern th {
-            @apply px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #4b5563;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
         .table-modern td {
-            @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+            padding: 1rem 1.5rem;
+            white-space: nowrap;
+            font-size: 0.875rem;
+            color: #111827;
         }
         
         .table-modern tbody tr {
-            @apply border-b border-gray-200 hover:bg-gray-50 transition-colors duration-200;
+            border-bottom: 1px solid #e5e7eb;
+            transition: background-color 0.2s ease;
+        }
+        
+        .table-modern tbody tr:hover {
+            background-color: #f9fafb;
         }
         
         .table-modern tbody tr:last-child {
-            @apply border-b-0;
+            border-bottom: none;
         }
         
         /* Modern Form Styles */
         .form-group {
-            @apply mb-6;
+            margin-bottom: 1.5rem;
         }
         
         .form-label {
-            @apply block text-sm font-semibold text-gray-700 mb-2;
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
         }
         
         .form-input {
-            @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            font-size: 0.875rem;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-input:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         
         .form-select {
-            @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            font-size: 0.875rem;
+            background-color: white;
+        }
+        
+        .form-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-select:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         
         .form-textarea {
-            @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-md resize-none;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            font-size: 0.875rem;
+            resize: none;
+        }
+        
+        .form-textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-textarea:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         
         /* Status Badges */
         .badge-success {
-            @apply px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #dcfce7;
+            color: #166534;
+            border-radius: 9999px;
         }
         
         .badge-warning {
-            @apply px-3 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #fef3c7;
+            color: #92400e;
+            border-radius: 9999px;
         }
         
         .badge-danger {
-            @apply px-3 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #fee2e2;
+            color: #991b1b;
+            border-radius: 9999px;
         }
         
         .badge-info {
-            @apply px-3 py-1 text-xs font-medium bg-blue-100 text-blue-800 rounded-full;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #dbeafe;
+            color: #1e40af;
+            border-radius: 9999px;
         }
         
         .badge-secondary {
-            @apply px-3 py-1 text-xs font-medium bg-gray-100 text-gray-800 rounded-full;
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: #f3f4f6;
+            color: #374151;
+            border-radius: 9999px;
+        }
+        
+        /* Modern Pagination Styles */
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .pagination li {
+            display: inline-block;
+        }
+        
+        .pagination a,
+        .pagination span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2.5rem;
+            height: 2.5rem;
+            padding: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            border: 1px solid #e5e7eb;
+            background: white;
+            color: #374151;
+        }
+        
+        .pagination a:hover {
+            background-color: #f3f4f6;
+            border-color: #d1d5db;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .pagination .active span {
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            color: white;
+            border-color: #3b82f6;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
+        }
+        
+        .pagination .disabled span {
+            background-color: #f9fafb;
+            color: #9ca3af;
+            border-color: #e5e7eb;
+            cursor: not-allowed;
+        }
+        
+        .pagination .disabled span:hover {
+            background-color: #f9fafb;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Pagination Info */
+        .pagination-info {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
         }
         
         /* Animation Classes */
@@ -160,74 +446,24 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
     </style>
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            primary: {
-                                50: '#f0f9ff',
-                                100: '#e0f2fe',
-                                200: '#bae6fd',
-                                300: '#7dd3fc',
-                                400: '#38bdf8',
-                                500: '#0ea5e9',
-                                600: '#0284c7',
-                                700: '#0369a1',
-                                800: '#075985',
-                                900: '#0c4a6e',
-                            },
-                            secondary: {
-                                50: '#faf5ff',
-                                100: '#f3e8ff',
-                                200: '#e9d5ff',
-                                300: '#d8b4fe',
-                                400: '#c084fc',
-                                500: '#a855f7',
-                                600: '#9333ea',
-                                700: '#7c3aed',
-                                800: '#6b21a8',
-                                900: '#581c87',
-                            }
-                        },
-                        fontFamily: {
-                            'sans': ['Inter', 'system-ui', 'sans-serif'],
-                        },
-                        animation: {
-                            'fade-in': 'fadeIn 0.6s ease-in-out',
-                            'slide-up': 'slideUp 0.6s ease-out',
-                            'slide-left': 'slideLeft 0.3s ease-out',
-                            'float': 'float 6s ease-in-out infinite',
-                            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        },
-                        keyframes: {
-                            fadeIn: {
-                                '0%': { opacity: '0' },
-                                '100%': { opacity: '1' },
-                            },
-                            slideUp: {
-                                '0%': { transform: 'translateY(30px)', opacity: '0' },
-                                '100%': { transform: 'translateY(0)', opacity: '1' },
-                            },
-                            slideLeft: {
-                                '0%': { transform: 'translateX(-20px)', opacity: '0' },
-                                '100%': { transform: 'translateX(0)', opacity: '1' },
-                            },
-                            float: {
-                                '0%, 100%': { transform: 'translateY(0px)' },
-                                '50%': { transform: 'translateY(-10px)' },
-                            }
-                        }
-                    }
-                }
-            }
-        </script>
 
     @stack('styles')
+    
+    <script>
+        // Verificar se o Tailwind está carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM carregado');
+            if (typeof tailwind === 'undefined') {
+                console.warn('Tailwind CSS não está carregado');
+            } else {
+                console.log('Tailwind CSS carregado com sucesso');
+            }
+        });
+    </script>
 </head>
 <body class="font-sans antialiased bg-gray-50">
     <div class="flex h-screen overflow-hidden">
-        <div class="hidden lg:flex lg:flex-shrink-0">
+        <div class="hidden lg:flex lg:flex-shrink-0" id="desktop-sidebar">
             <div class="flex flex-col w-64">
                 <div class="flex flex-col h-0 flex-1 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
                     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
@@ -301,7 +537,7 @@
                 
                 <div class="flex-1 px-4 flex justify-between">
                     <div class="flex-1 flex items-center">
-                        <h1 class="text-xl sm:text-2xl font-bold text-gray-900">@yield('page-title', 'Dashboard')</h1>
+                        <h1 class="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">@yield('page-title', 'Dashboard')</h1>
                     </div>
                     
                     <div class="ml-4 flex items-center md:ml-6">
@@ -347,7 +583,7 @@
 
     @include('components.toaster')
 
-    <div class="lg:hidden" id="mobile-sidebar">
+    <div class="lg:hidden hidden" id="mobile-sidebar">
         <div class="fixed inset-0 flex z-40">
             <div class="fixed inset-0 bg-gray-600 bg-opacity-75" id="sidebar-backdrop"></div>
             <div class="relative flex-1 flex flex-col max-w-xs w-full bg-gray-900">
@@ -398,6 +634,9 @@
             const mobileSidebar = document.getElementById('mobile-sidebar');
             const sidebarBackdrop = document.getElementById('sidebar-backdrop');
             const mobileSidebarClose = document.getElementById('mobile-sidebar-close');
+
+            // Garantir que a sidebar mobile comece fechada
+            mobileSidebar.classList.add('hidden');
 
             sidebarToggle.addEventListener('click', function() {
                 mobileSidebar.classList.remove('hidden');

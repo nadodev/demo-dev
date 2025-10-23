@@ -4,14 +4,14 @@
 @section('page-title', 'Detalhes do Serviço')
 
 @section('top-actions')
-    <div class="flex flex-col sm:flex-row gap-3">
-        <a href="{{ route('dashboard.services.edit', $service) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-300">
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+        <a href="{{ route('dashboard.services.edit', $service) }}" class="btn-primary">
             <i class="fas fa-edit mr-2"></i>
-            Editar
+            <span class="hidden sm:inline">Editar</span>
         </a>
-        <a href="{{ route('dashboard.services.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors duration-300">
+        <a href="{{ route('dashboard.services.index') }}" class="btn-outline">
             <i class="fas fa-arrow-left mr-2"></i>
-            Voltar
+            <span class="hidden sm:inline">Voltar</span>
         </a>
     </div>
 @endsection

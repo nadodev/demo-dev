@@ -161,7 +161,7 @@
             <!-- Pagination -->
             @if($products->hasPages())
                 <div class="mt-6 flex items-center justify-between">
-                    <div class="text-sm text-gray-700">
+                    <div class="pagination-info">
                         Mostrando {{ $products->firstItem() }} a {{ $products->lastItem() }} de {{ $products->total() }} resultados
                     </div>
                     <div class="flex space-x-2">

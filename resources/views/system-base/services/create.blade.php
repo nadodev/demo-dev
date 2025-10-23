@@ -4,25 +4,29 @@
 @section('page-title', 'Novo Serviço')
 
 @section('top-actions')
-    <a href="{{ route('dashboard.services.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition-colors duration-300">
-        <i class="fas fa-arrow-left mr-2"></i>
-        Voltar
-    </a>
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+        <a href="{{ route('dashboard.services.index') }}" class="btn-outline">
+            <i class="fas fa-arrow-left mr-2"></i>
+            <span class="hidden sm:inline">Voltar</span>
+        </a>
+    </div>
 @endsection
 
 @section('content')
-    <div class="bg-white shadow-lg rounded-xl">
-        <div class="px-6 py-4 border-b border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-900">Criar Novo Serviço</h3>
-            <p class="text-sm text-gray-600">Preencha os dados do serviço</p>
+    <div class="card animate-slide-up">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-plus text-blue-500 mr-3"></i>
+                Criar Novo Serviço
+            </h3>
         </div>
 
-        <form action="{{ route('dashboard.services.store') }}" method="POST" enctype="multipart/form-data" class="p-6">
+        <form action="{{ route('dashboard.services.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <!-- Nome do Serviço -->
-                <div class="md:col-span-2">
+                <div class="lg:col-span-2 form-group">
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
                         Nome do Serviço <span class="text-red-500">*</span>
                     </label>

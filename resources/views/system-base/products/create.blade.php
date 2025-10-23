@@ -4,10 +4,12 @@
 @section('page-title', 'Novo Produto')
 
 @section('top-actions')
-    <a href="{{ route('dashboard.products.index') }}" class="btn-outline">
-        <i class="fas fa-arrow-left mr-2"></i>
-        Voltar
-    </a>
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+        <a href="{{ route('dashboard.products.index') }}" class="btn-outline">
+            <i class="fas fa-arrow-left mr-2"></i>
+            <span class="hidden sm:inline">Voltar</span>
+        </a>
+    </div>
 @endsection
 
 @section('content')
@@ -22,9 +24,9 @@
         <form action="{{ route('dashboard.products.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                 <!-- Nome do Produto -->
-                <div class="md:col-span-2 form-group">
+                <div class="lg:col-span-2 form-group">
                     <label for="name" class="form-label">
                         <i class="fas fa-box text-green-500 mr-2"></i>
                         Nome do Produto *
@@ -55,7 +57,7 @@
                                value="{{ old('price') }}"
                                step="0.01"
                                min="0"
-                               class="form-input pl-8 @error('price') border-red-500 @enderror"
+                               class="form-input pl-12 @error('price') border-red-500 @enderror"
                                placeholder="0,00"
                                required>
                     </div>
@@ -123,7 +125,7 @@
                 </div>
 
                 <!-- Descrição -->
-                <div class="md:col-span-2 form-group">
+                <div class="lg:col-span-2 form-group">
                     <label for="description" class="form-label">
                         <i class="fas fa-align-left text-green-500 mr-2"></i>
                         Descrição *
@@ -140,7 +142,7 @@
                 </div>
 
                 <!-- Imagem -->
-                <div class="md:col-span-2 form-group">
+                <div class="lg:col-span-2 form-group">
                     <label for="image" class="form-label">
                         <i class="fas fa-image text-green-500 mr-2"></i>
                         Imagem do Produto
@@ -167,12 +169,12 @@
             </div>
 
             <!-- Form Actions -->
-            <div class="flex items-center justify-end space-x-4 pt-6 border-t border-gray-200">
-                <a href="{{ route('dashboard.products.index') }}" class="btn-outline">
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-end space-y-2 sm:space-y-0 sm:space-x-4 pt-6 border-t border-gray-200">
+                <a href="{{ route('dashboard.products.index') }}" class="btn-outline order-2 sm:order-1">
                     <i class="fas fa-times mr-2"></i>
                     Cancelar
                 </a>
-                <button type="submit" class="btn-success">
+                <button type="submit" class="btn-success order-1 sm:order-2">
                     <i class="fas fa-save mr-2"></i>
                     Salvar Produto
                 </button>

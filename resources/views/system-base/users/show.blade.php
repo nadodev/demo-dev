@@ -4,16 +4,16 @@
 @section('page-title', 'Detalhes do Usuário')
 
 @section('top-actions')
-<div class="flex space-x-3">
-    <a href="{{ route('dashboard.users.index') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 text-gray-700 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200">
-        <i class="fas fa-arrow-left mr-2"></i>
-        Voltar
-    </a>
-    <a href="{{ route('dashboard.users.edit', $user) }}" class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105">
-        <i class="fas fa-edit mr-2"></i>
-        Editar
-    </a>
-</div>
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+        <a href="{{ route('dashboard.users.edit', $user) }}" class="btn-primary">
+            <i class="fas fa-edit mr-2"></i>
+            <span class="hidden sm:inline">Editar</span>
+        </a>
+        <a href="{{ route('dashboard.users.index') }}" class="btn-outline">
+            <i class="fas fa-arrow-left mr-2"></i>
+            <span class="hidden sm:inline">Voltar</span>
+        </a>
+    </div>
 @endsection
 
 @section('content')

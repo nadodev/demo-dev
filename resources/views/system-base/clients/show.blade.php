@@ -4,14 +4,14 @@
 @section('page-title', 'Visualizar Cliente')
 
 @section('top-actions')
-    <div class="flex space-x-3">
+    <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
         <a href="{{ route('dashboard.clients.edit', $client) }}" class="btn-primary">
             <i class="fas fa-edit mr-2"></i>
-            Editar
+            <span class="hidden sm:inline">Editar</span>
         </a>
         <a href="{{ route('dashboard.clients.index') }}" class="btn-outline">
             <i class="fas fa-arrow-left mr-2"></i>
-            Voltar
+            <span class="hidden sm:inline">Voltar</span>
         </a>
     </div>
 @endsection
